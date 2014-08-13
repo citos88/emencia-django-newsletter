@@ -404,11 +404,13 @@ class WorkGroup(models.Model):
 
 # --- subscriber verification --- start ---------------------------------------
 if SUBSCRIBER_VERIFICATION:
+    def make_uuid():
+        return str(uuid.uuid4())
     class SubscriberVerification(models.Model):
         link_id = models.CharField(
             _('link_id'),
             max_length=255,
-            default=uuid.uuid4
+            default=make_uuid
         )
         contact = models.ForeignKey(Contact)
 
